@@ -14,11 +14,12 @@ priceCalc.input.item = function (target) {
   var form = document.querySelector('.price-calc .list');
   var obj = priceCalc.config;
   //serialize here!!
-  priceCalc.output.clearDropdowns();
-  form.querySelectorAll('select').forEach(function (dropdown) {
+  priceCalc.output.clearDropdowns(target);
+  form.querySelectorAll('select').forEach(function (dropdown) {//get obj via dropdown values
     obj = obj[dropdown.value];
   });
-  //clear fieldset.item here!!
+  priceCalc.output.clearItem();
+  priceCalc.output.clearPrice();
   var func = priceCalc.logic.isItem(obj) ? 'item' : 'list';
   priceCalc.output[func](obj);
   //re-output if possible here!!
@@ -76,6 +77,12 @@ priceCalc.output.clearDropdowns = function (target) {
     parent.removeChild(next);
     next = target.nextElementSibling;
   }
+};
+priceCalc.output.clearItem = function () {
+  $('.price-calc .item').html('');
+};
+priceCalc.output.clearPrice = function () {
+  $('.price-calc .price').html('');
 };
 priceCalc.output.dimension = function (dimension, unit) {
   var label = $('<label>');
