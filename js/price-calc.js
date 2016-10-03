@@ -14,7 +14,7 @@ priceCalc.input.item = function (target) {
   var form = document.querySelector('.price-calc .list');
   var obj = priceCalc.config;
   //serialize here!!
-  //remove all dropdowns after this target!!
+  priceCalc.output.clearDropdowns();
   form.querySelectorAll('select').forEach(function (dropdown) {
     obj = obj[dropdown.value];
   });
@@ -68,6 +68,14 @@ priceCalc.output.area = function (obj) {
   var width = priceCalc.output.dimension('width', unit);
   var height = priceCalc.output.dimension('height', unit);
   return area.append(width).append(height);
+};
+priceCalc.output.clearDropdowns = function (target) {
+  var parent = target.parentElement;
+  var next = target.nextElementSibling;
+  if (next) {
+    parent.removeChild(next);
+    next = target.nextElementSibling;
+  }
 };
 priceCalc.output.dimension = function (dimension, unit) {
   var label = $('<label>');
