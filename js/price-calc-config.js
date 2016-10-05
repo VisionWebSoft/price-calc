@@ -25,17 +25,17 @@ priceCalc.config= {
     "24x18": {
       qty: ["1:77.91", "5:53.58", "10:47.91", "20:46.24"],
       variations:6,
-      updgrade: "1/2\" Radius Corners:1"
+      upgrade: "1/2\" Radius Corners:1"
     },
     "28x20": {
       qty: ["1:94.58", "5:72.58", "10:64.58", "20:62.91"],
       variations:6,
-      updgrade: "1/2\" Radius Corners:1"
+      upgrade: "1/2\" Radius Corners:1"
     },
     "36x24": {
       qty: ["1:105.41", "5:82.08", "10:75.41", "20:73.74"],
       variations:6,
-      updgrade: "1/2\" Radius Corners:1"
+      upgrade: "1/2\" Radius Corners:1"
     }
   },
   "sidewalk signage (23x35)": {
