@@ -44,7 +44,7 @@ priceCalc.logic.getBasePrice = function (obj, area) {
   return base;
 };
 priceCalc.logic.getBracketPrice = function (qty, area) {
-  var arr = qty.reverse();
+  var arr = qty.slice().reverse();
   var price = 0;
   for (var c = 0, l = arr.length; c < l; c++) {
     var entry = arr[c].split(':').map(function(str) {
@@ -102,6 +102,9 @@ priceCalc.output.item = function (obj) {
   if (obj.area) {
     item.append(priceCalc.output.area(obj));
   }
+  if (obj.variations) {
+    item.append(priceCalc.output.variations(obj));
+  }
   item.append(priceCalc.output.qty(obj));
   priceCalc.output.price();
 };
@@ -131,10 +134,11 @@ priceCalc.output.obj = function () {
 };
 priceCalc.output.price = function () {//replace input.calc() or spinoff some functionality to it?!!
   var obj = priceCalc.output.obj();
-  var h = $('.price-calc .height').val() || 1;
-  var w = $('.price-calc .width').val() || 1;
-  var qty = $('.price-calc .qty').val() || 0;
-  var totalArea = h * w * qty; 
+  //merge these into arrow functions
+  var h = parseFloat($('.price-calc .height').val()) || 1;
+  var w = parseFloat($('.price-calc .width').val()) || 1;
+  var qty = parseFloat($('.price-calc .qty').val()) || 0;
+  var totalArea = h * w * qty;
   var base = priceCalc.logic.getBasePrice(obj, totalArea);//adjust for base price here!!
   //if upgrade, add to base price
   var price = base * totalArea;
@@ -145,5 +149,11 @@ priceCalc.output.qty = function (obj) {
   var label = $('<label>');
   var desc = $('<span>').html('Quantity: ');
   var input = $('<input>').attr('type', 'number').addClass('qty').attr('min', 1).val(1).attr('oninput', 'priceCalc.input.calc()');
+  return label.append(desc).append(input);
+};
+priceCalc.output.variations = function (obj) {//merge this and output.qty to otput input[type=number]?!!
+  var label = $('<label>');
+  var desc = $('<span>').html('Variations: ');
+  var input = $('<input>').attr('type', 'number').addClass('variations').attr('min', 2).attr('oninput', 'priceCalc.input.calc()');
   return label.append(desc).append(input);
 };
