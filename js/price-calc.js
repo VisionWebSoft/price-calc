@@ -143,6 +143,10 @@ priceCalc.output.price = function () {//replace input.calc() or spinoff some fun
   //if upgrade, add to base price
   var price = base * totalArea;
   //if extra addons, add to price
+  var variations = parseFloat($('.price-calc .variations').val()) || 0;
+  if (variations > 1) {
+    price += variations * obj.variations;
+  }
   $('.price-calc .price').html('Total: $' + price.toFixed(2));
 };
 priceCalc.output.qty = function (obj) {
@@ -154,6 +158,6 @@ priceCalc.output.qty = function (obj) {
 priceCalc.output.variations = function (obj) {//merge this and output.qty to otput input[type=number]?!!
   var label = $('<label>');
   var desc = $('<span>').html('Variations: ');
-  var input = $('<input>').attr('type', 'number').addClass('variations').attr('min', 2).attr('oninput', 'priceCalc.input.calc()');
+  var input = $('<input>').attr('type', 'number').addClass('variations').attr('min', 2).attr('oninput', 'priceCalc.input.calc()').attr('placeholder', '(min of 2)');
   return label.append(desc).append(input);
 };
