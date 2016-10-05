@@ -24,23 +24,23 @@ priceCalc.config= {
   "real estate signage with frame (2 sided)": {
     "24x18": {
       qty: ["1:77.91", "5:53.58", "10:47.91", "20:46.24"],
-      extra: "variations:6",
+      variations:6,
       updgrade: "1/2\" Radius Corners:1"
     },
     "28x20": {
       qty: ["1:94.58", "5:72.58", "10:64.58", "20:62.91"],
-      extra: "variations:6",
+      variations:6,
       updgrade: "1/2\" Radius Corners:1"
     },
     "36x24": {
       qty: ["1:105.41", "5:82.08", "10:75.41", "20:73.74"],
-      extra: "variations:6",
+      variations:6,
       updgrade: "1/2\" Radius Corners:1"
     }
   },
   "sidewalk signage (23x35)": {
     qty: ["2:60","4:58","12:54","16:53"],
-    extra: "variations:6"
+    variations:6
   },
   "vinyl posters": {
      "Intermediate Vinyl #2009": {
